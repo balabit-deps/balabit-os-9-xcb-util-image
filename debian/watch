@@ -1,0 +1,3 @@
+#git=https://gitlab.freedesktop.org/xorg/lib/libxcb-image
+version=3
+http://xcb.freedesktop.org/dist/xcb-util-image-([0-9.]*)\.tar\.bz2

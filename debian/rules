@@ -1,0 +1,16 @@
+#!/usr/bin/make -f
+
+ORIG_MAJOR=$(shell git describe upstream | cut -d- -f1)
+ORIG_GIT=$(shell git describe upstream | cut -d- -f2)
+
+%:
+	dh $@ --builddirectory=build/
+
+override_dh_install:
+	find debian/tmp -name '*.la' -delete
+	dh_install
+
+get-orig-source:
+	git archive upstream | gzip -9 > ../xcb-util-image_$(ORIG_MAJOR)+git$(ORIG_GIT).orig.tar.gz
+
+.PHONY: get-orig-source
